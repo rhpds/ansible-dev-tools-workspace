@@ -5,19 +5,6 @@ attributes:
   controller.devfile.io/storage-type: per-workspace
 metadata:
   name: ansible-devspaces-example
-# You can store your devfile in one repository, and then add additional repositories
-# as shown below to be automatically added into your workspace
-# projects:
-#   - name: sample-collection-repo
-#     git:
-#       remotes:
-#         origin: 'https://github.com/ansible-collections/kubernetes.core'
-#   - name: sample-multi-repo-project
-#     git:
-#       remotes:
-#         origin: 'https://github.com/containers/podman'
-#       checkoutFrom:
-#         revision: main
 components:
   - name: dev-tools
     attributes:
@@ -34,8 +21,7 @@ components:
           # Ask for an unmasked /proc to be available to this container
           procMount: Unmasked
     container:
-      image: quay.io/jpullen0/ansible-devspaces-nested-podman:latest
-      # image: quay.io/cgruver0/che/ocp-4-17-userns-tp:latest
+      image: quay.io/jpullen0/ansible-devspaces-nested-podman:opencode
       cpuLimit: 4000m
       cpuRequest: 250m
       memoryLimit: 4Gi
