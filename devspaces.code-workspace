@@ -43,6 +43,7 @@
         "terminal.integrated.scrollback": 10000,
         "openshiftToolkit.showWelcomePage": false,
         "openshiftToolkit.searchForToolsInPath": true,
-        "openshiftToolkit.execMaxBufferLength": 10
+        "openshiftToolkit.execMaxBufferLength": 10,
+        "python.useEnvironmentsExtension": true
     }
 }
