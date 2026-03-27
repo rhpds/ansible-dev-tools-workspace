@@ -28,7 +28,7 @@ components:
       memoryRequest: 128Mi
       env:
         - name: VSCODE_DEFAULT_WORKSPACE
-          value: /projects/devspaces-example/devspaces.code-workspace
+          value: /projects/devspaces-example-summit/devspaces.code-workspace
   - name: prep-workspace
     container:
       args:
