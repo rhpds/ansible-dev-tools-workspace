@@ -21,14 +21,18 @@ components:
           # Ask for an unmasked /proc to be available to this container
           procMount: Unmasked
     container:
-      image: quay.io/jpullen0/ansible-devspaces-nested-podman:opencode
+      image: quay.io/leogallego/ansible-devspaces-summit:latest
+      mountSources: true
+      sourceMapping: /projects
       cpuLimit: 4000m
       cpuRequest: 250m
       memoryLimit: 4Gi
       memoryRequest: 128Mi
       env:
         - name: VSCODE_DEFAULT_WORKSPACE
-          value: /projects/devspaces-example-summit/devspaces.code-workspace
+          value: /projects/ansible-devspaces-summit/devspaces.code-workspace
+        - name: PATH
+          value: /projects/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
   - name: prep-workspace
     container:
       args:
