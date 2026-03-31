@@ -17,10 +17,24 @@
     "settings": {
         "editor.wordWrap": "on",
         "files.associations": {
-            "**/playbooks/*.yml": "ansible",
+            "**/playbooks/**/*.yml": "ansible",
+            "**/playbooks/**/*.yaml": "ansible",
             "**/roles/**/*.yml": "ansible",
-            "**/tasks/*.yml": "ansible",
-            "**/collections/**/*.yml": "ansible"
+            "**/roles/**/*.yaml": "ansible",
+            "**/tasks/**/*.yml": "ansible",
+            "**/tasks/**/*.yaml": "ansible",
+            "**/handlers/**/*.yml": "ansible",
+            "**/handlers/**/*.yaml": "ansible",
+            "**/meta/*.yml": "ansible",
+            "**/meta/*.yaml": "ansible",
+            "**/defaults/*.yml": "ansible",
+            "**/defaults/*.yaml": "ansible",
+            "**/vars/**/*.yml": "ansible",
+            "**/vars/**/*.yaml": "ansible",
+            "**/collections/**/*.yml": "ansible",
+            "**/collections/**/*.yaml": "ansible",
+            "**/site.yml": "ansible",
+            "**/site.yaml": "ansible"
         },
         "ansible.ansible.path": "/usr/local/bin/ansible",
         "ansible.python.interpreterPath": "/usr/bin/python3",
@@ -34,7 +48,7 @@
         "files.trimTrailingWhitespace": true,
         "files.trimFinalNewlines": true,
         "files.insertFinalNewline": true,
-        "ansible.validation.lint.arguments": "--profile production --offline",
+        "ansible.validation.lint.arguments": "",
         "[python]": {
             "editor.defaultFormatter": "ms-python.black-formatter"
         },
