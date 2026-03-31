@@ -1,8 +1,8 @@
 {
     "folders": [
         {
-            "name": "devspaces-example-summit",
-            "path": "/projects/devspaces-example-summit"
+            "name": "ansible-devspaces-summit",
+            "path": "/projects/ansible-devspaces-summit"
         }
     ],
     "extensions": {
@@ -18,7 +18,10 @@
     "settings": {
         "editor.wordWrap": "on",
         "files.associations": {
-            "*.yml": "ansible"
+            "**/playbooks/*.yml": "ansible",
+            "**/roles/**/*.yml": "ansible",
+            "**/tasks/*.yml": "ansible",
+            "**/collections/**/*.yml": "ansible"
         },
         "ansible.ansible.path": "/usr/local/bin/ansible",
         "ansible.python.interpreterPath": "/usr/bin/python3",
