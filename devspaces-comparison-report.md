@@ -10,8 +10,15 @@ Date: 2026-03-31
 
 This report compares two DevSpaces implementations for Ansible development environments:
 
-- **ansible-devspaces-summit** — Custom all-in-one repo with image, devfile, and VS Code workspace config. Originally built for summit demos showcasing nested containers on OpenShift.
-- **ansible/ansible-dev-tools** — Upstream repo maintained by the Ansible DevTools team. The `devspaces/` directory builds the `ghcr.io/ansible/ansible-devspaces` image, and `devfile.yaml` provides the reference workspace definition.
+- [**ansible-devspaces-summit**](https://github.com/leogallego/ansible-devspaces-summit) — Custom all-in-one repo with image, devfile, and VS Code workspace config. An Ansible workspace for DevSpaces with nested containers support.
+  - [devfile.yaml](https://github.com/leogallego/ansible-devspaces-summit/blob/main/devfile.yaml)
+  - [Containerfile](https://github.com/leogallego/ansible-devspaces-summit/blob/main/workspace-image/Containerfile)
+  - [devspaces.code-workspace](https://github.com/leogallego/ansible-devspaces-summit/blob/main/devspaces.code-workspace)
+- [**ansible/ansible-dev-tools**](https://github.com/ansible/ansible-dev-tools) — Upstream repo maintained by the Ansible DevTools team. The `devspaces/` directory builds the `ghcr.io/ansible/ansible-devspaces` image, and `devfile.yaml` provides the reference workspace definition.
+  - [devfile.yaml](https://github.com/ansible/ansible-dev-tools/blob/main/devfile.yaml)
+  - [devspaces/Containerfile](https://github.com/ansible/ansible-dev-tools/blob/main/devspaces/Containerfile)
+  - [devspaces/context/setup.sh](https://github.com/ansible/ansible-dev-tools/blob/main/devspaces/context/setup.sh)
+  - [devspaces/context/entrypoint.sh](https://github.com/ansible/ansible-dev-tools/blob/main/devspaces/context/entrypoint.sh)
 
 As of [commit 06600bd](https://github.com/ansible/ansible-dev-tools/commit/06600bd44c40e87254cc65d24ef647d549072876), both repos now use the same core approach: **rootless podman via user namespaces** for container-in-container support. Neither uses kubedock.
 
@@ -105,7 +112,7 @@ Our repo is the only one that ships a ready-to-use VS Code workspace with Ansibl
 
 ---
 
-## Companion Repo: redhat-developer-demos/ansible-devspaces-demo
+## Companion Repo: [redhat-developer-demos/ansible-devspaces-demo](https://github.com/redhat-developer-demos/ansible-devspaces-demo)
 
 The `ansible-devspaces-demo` repo is the intended **consumer** of the upstream image. It does not build an image — it uses `ghcr.io/ansible/ansible-devspaces:latest` directly and adds:
 
