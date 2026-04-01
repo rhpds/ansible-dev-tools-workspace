@@ -1,6 +1,6 @@
 schemaVersion: 2.2.2
 metadata:
-  name: ansible-demo
+  name: ansible-devspaces-summit
 components:
   - name: tooling-container
     # --- BEGIN nested podman overrides ---
