@@ -1,0 +1,22 @@
+---
+profile: production
+
+offline: true
+
+exclude_paths:
+  - .cache/
+  - .github/
+  - .git/
+  - summit-merge/
+  - workspace-image/
+  - workspace-config/
+
+use_default_rules: true
+
+var_naming_pattern: "^[a-z_][a-z0-9_]*$"
+loop_var_prefix: "^(__|{role}_)"
+
+warn_list:
+  - experimental
+
+skip_list: []
