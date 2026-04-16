@@ -207,3 +207,6 @@ marimo/_lsp/
 __marimo__/
 
 checluster.yaml
+
+# Ansible home (galaxy cache, tokens, tmp)
+.ansible/

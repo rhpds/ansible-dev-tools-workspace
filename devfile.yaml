@@ -27,5 +27,7 @@ components:
       cpuRequest: 250m
       cpuLimit: 2000m
       env:
+        - name: ANSIBLE_HOME
+          value: /projects/ansible-devspaces-summit/.ansible
         - name: VSCODE_DEFAULT_WORKSPACE
           value: /projects/ansible-devspaces-summit/devspaces.code-workspace
