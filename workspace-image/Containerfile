@@ -1,55 +1,22 @@
-FROM registry.access.redhat.com/ubi9:9.5
-ARG USER_HOME_DIR="/home/user"
+FROM quay.io/devfile/base-developer-image:ubi9-latest
 
-LABEL repo="github.com/leogallego/ansible-devspaces-summit"
+ARG PYV=3.12
+ARG ENABLE_NOPASSWD_SUDO=true
 
-ENV HOME=${USER_HOME_DIR} \
-    BUILDAH_ISOLATION=chroot \
-    PIP_OPTS=--no-build-isolation
+LABEL org.opencontainers.image.source=https://github.com/ansible/ansible-dev-tools
+LABEL org.opencontainers.image.authors="Ansible DevTools"
+LABEL org.opencontainers.image.vendor="Red Hat"
+LABEL org.opencontainers.image.licenses="GPL-3.0"
+LABEL org.opencontainers.image.description="An OpenShift Dev Spaces container image for Ansible."
 
-COPY --chown=0:0 entrypoint.sh /
+USER 0
 
-RUN dnf --disableplugin=subscription-manager --nodocs --allowerasing install -y python3-psycopg2 openssl git tar shadow-utils bash zsh podman buildah skopeo python3.11-devel python3.11 python3.11-pip aardvark-dns ; \
-    dnf clean all ; \
-    mkdir -p ${HOME} ; \
-    chgrp -R 0 ${HOME} ; \
-    ln -s /projects/bin/oc /usr/local/bin/oc ; \
-    ln -s /projects/bin/kubectl /usr/local/bin/kubectl
+WORKDIR /context
+RUN --mount=type=bind,target=. --mount=type=cache,dst=/var/cache/dnf --mount=type=cache,dst=/root/.cache/pip ENABLE_NOPASSWD_SUDO="${ENABLE_NOPASSWD_SUDO}" ./setup.sh
 
-RUN alternatives --install /usr/bin/python3 python3 /usr/bin/python3.9 1 && \
-    alternatives --install /usr/bin/python3 python3 /usr/bin/python3.11 50 && \
-    alternatives --install /usr/bin/python python /usr/bin/python3.9 1 && \
-    alternatives --install /usr/bin/python python /usr/bin/python3.11 50 && \
-    alternatives --install /usr/bin/pip3 pip3 /usr/bin/pip3.11 50 && \
-    alternatives --install /usr/bin/pip pip /usr/bin/pip3.11 50
+ENV BUILDAH_ISOLATION=chroot
 
-ADD --chown=0:0 requirements.txt requirements.txt
+USER 10001
 
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Install OpenCode
-# RUN curl -fsSL https://opencode.ai/install | bash
-RUN curl -fsSL https://github.com/sst/opencode/releases/download/v1.3.3/opencode-linux-x64.tar.gz -o /tmp/opencode.tar.gz && \
-    tar xzf /tmp/opencode.tar.gz -C /usr/local/bin/ && \
-    rm /tmp/opencode.tar.gz && \
-    # alternatives --install /usr/bin/opencode opencode /home/user/.opencode/bin/opencode 50
-    alternatives --install /usr/bin/opencode opencode /usr/local/bin/opencode 50
-
-#
-# Setup for root-less podman
-#
-RUN mkdir -p ${USER_HOME_DIR} ; \
-    mkdir -p ${USER_HOME_DIR}/.config/containers ; \
-    (echo '[storage]';echo 'driver = "overlay"';echo 'graphroot = "/tmp/graphroot"';echo '[storage.options.overlay]';echo 'mount_program = "/usr/bin/fuse-overlayfs"') > ${USER_HOME_DIR}/.config/containers/storage.conf ; \
-    chown -R 1000:1000 ${USER_HOME_DIR} ; \
-    echo "user:x:1000:0:devspaces user:${USER_HOME_DIR}:/bin/bash" >> /etc/passwd ; \
-    echo "user:x:1000:" >> /etc/group ; \
-    echo "user:1001:64535" >> /etc/subuid ; \
-    echo "user:1001:64535" >> /etc/subgid ; \
-    setcap cap_setuid+ep /usr/bin/newuidmap ; \
-    setcap cap_setgid+ep /usr/bin/newgidmap ; \
-    chmod +x /entrypoint.sh
-
-USER 1000
-ENTRYPOINT ["/usr/libexec/podman/catatonit","--","/entrypoint.sh"]
-CMD [ "tail", "-f", "/dev/null" ]
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["tail", "-f", "/dev/null"]
