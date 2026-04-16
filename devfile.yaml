@@ -22,12 +22,14 @@ components:
     # --- END nested podman overrides ---
     container:
       image: ghcr.io/ansible/ansible-devspaces:latest
-      memoryRequest: 256M
-      memoryLimit: 6Gi
-      cpuRequest: 250m
+      memoryRequest: 2Gi
+      memoryLimit: 4Gi
+      cpuRequest: 500m
       cpuLimit: 2000m
       env:
         - name: ANSIBLE_HOME
           value: /projects/ansible-devspaces-summit/.ansible
+        - name: HOSTNAME
+          value: ansible-devspaces
         - name: VSCODE_DEFAULT_WORKSPACE
           value: /projects/ansible-devspaces-summit/devspaces.code-workspace
