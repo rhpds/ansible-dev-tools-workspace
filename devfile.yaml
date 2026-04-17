@@ -38,7 +38,12 @@ commands:
     exec:
       component: tooling-container
       commandLine: >-
-        sed -i 's/^wheel:x:10:.*/&,'"$(whoami)"'/' /etc/group
+        if ! id -nG 2>/dev/null | grep -qw wheel; then
+        _tmp=$(mktemp) &&
+        awk -F: -v u="$(whoami)" '$1=="wheel"{$4=($4==""?u:$4","u)} {print $1":"$2":"$3":"$4}' /etc/group >"$_tmp" &&
+        cat "$_tmp" >/etc/group &&
+        rm -f "$_tmp";
+        fi
 events:
   postStart:
     - fix-sudo
