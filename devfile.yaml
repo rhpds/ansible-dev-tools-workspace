@@ -19,6 +19,9 @@ components:
       container-overrides:
         securityContext:
           procMount: Unmasked
+          capabilities:
+            add:
+              - AUDIT_WRITE
     # --- END nested podman overrides ---
     container:
       image: ghcr.io/ansible/ansible-devspaces:v26.4.4
