@@ -21,6 +21,8 @@ components:
           procMount: Unmasked
           capabilities:
             add:
+              - SETUID
+              - SETGID
               - AUDIT_WRITE
     # --- END nested podman overrides ---
     container:
