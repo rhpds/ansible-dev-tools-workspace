@@ -8,8 +8,6 @@ exclude_paths:
   - .github/
   - .git/
   - summit-merge/
-  - workspace-image/
-  - workspace-config/
 
 use_default_rules: true
 
