@@ -9,7 +9,7 @@ This is a DevWorkspaces configuration repo for launching an Ansible-focused deve
 ## Key Files
 
 - **devfile.yaml** — Devfile v2.2.0 defining the workspace. Two components:
-  - `dev-tools`: Main container using a custom image (`quay.io/jpullen0/ansible-devspaces-nested-podman:opencode`) with rootless podman, `/dev/fuse` and `/dev/net/tun` device mappings, unmasked `/proc`, and `hostUsers: false` for user namespace isolation.
+  - `dev-tools`: Main container using a custom image (`ghcr.io/ansible/ansible-devspaces:v26.4.5`) with rootless podman, `/dev/fuse` and `/dev/net/tun` device mappings, unmasked `/proc`, and `hostUsers: false` for user namespace isolation.
   - `prep-workspace`: Init container that copies `oc` and `kubectl` binaries into `/projects/bin` before workspace start.
 - **devspaces.code-workspace** — VS Code multi-root workspace config with recommended extensions and Ansible-specific settings (linting with `--profile production --offline`, fully qualified collection names, podman as container engine).
 
