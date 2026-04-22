@@ -1,6 +1,6 @@
 schemaVersion: 2.2.2
 metadata:
-  name: ansible-devspaces-summit
+  name: ansible-dev-tools-workspace
 components:
   - name: tooling-container
     # --- BEGIN nested podman overrides ---
@@ -28,8 +28,8 @@ components:
       cpuLimit: 2000m
       env:
         - name: ANSIBLE_HOME
-          value: /projects/ansible-devspaces-summit/.ansible
+          value: /projects/ansible-dev-tools-workspace/.ansible
         - name: HOSTNAME
           value: ansible-devspaces
         - name: VSCODE_DEFAULT_WORKSPACE
-          value: /projects/ansible-devspaces-summit/devspaces.code-workspace
+          value: /projects/ansible-dev-tools-workspace/devspaces.code-workspace

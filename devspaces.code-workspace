@@ -1,8 +1,8 @@
 {
     "folders": [
         {
-            "name": "ansible-devspaces-summit",
-            "path": "/projects/ansible-devspaces-summit"
+            "name": "ansible-dev-tools-workspace",
+            "path": "/projects/ansible-dev-tools-workspace"
         }
     ],
     "extensions": {
