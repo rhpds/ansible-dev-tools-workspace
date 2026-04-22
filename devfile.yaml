@@ -3,29 +3,12 @@ metadata:
   name: ansible-dev-tools-workspace
 components:
   - name: tooling-container
-    # --- BEGIN nested podman overrides ---
-    # Required for rootless podman with user namespaces.
-    # Dev Spaces 3.25+/OCP 4.20+ operators may auto-inject these, but older versions
-    # and clusters with custom SCCs (e.g. nested-podman-scc) require them explicitly.
-    # Without these, the pod fails SCC validation with:
-    #   "hostUsers must be set to false" / SETUID/SETGID capabilities not allowed
-    attributes:
-      pod-overrides:
-        metadata:
-          annotations:
-            io.kubernetes.cri-o.Devices: "/dev/fuse,/dev/net/tun"
-        spec:
-          hostUsers: false
-      container-overrides:
-        securityContext:
-          procMount: Unmasked
-    # --- END nested podman overrides ---
     container:
       image: ghcr.io/ansible/ansible-devspaces:v26.4.4
       memoryRequest: 2Gi
       memoryLimit: 4Gi
       cpuRequest: 500m
-      cpuLimit: 2000m
+      cpuLimit: 1000m
       env:
         - name: ANSIBLE_HOME
           value: /projects/ansible-dev-tools-workspace/.ansible
