@@ -10,9 +10,13 @@ components:
       cpuRequest: 500m
       cpuLimit: 1000m
       env:
+        - name: SHELL
+          value: /bin/bash
         - name: ANSIBLE_HOME
           value: /projects/ansible-dev-tools-workspace/.ansible
         - name: HOSTNAME
           value: ansible-devspaces
         - name: VSCODE_DEFAULT_WORKSPACE
           value: /projects/ansible-dev-tools-workspace/devspaces.code-workspace
+        - name: ADT_CONTAINER_ENGINE
+          value: podman

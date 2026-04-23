@@ -64,7 +64,7 @@
         "openshiftToolkit.searchForToolsInPath": true,
         "openshiftToolkit.execMaxBufferLength": 10,
         "python.useEnvironmentsExtension": false,
-        "security.workspace.trust.enabled": true,
+        "security.workspace.trust.enabled": false,
         "git.openRepositoryInParentFolders": "never",
         "redhat.telemetry.enabled": false
     }
