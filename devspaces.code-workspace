@@ -59,6 +59,15 @@
         "ansible.executionEnvironment.containerEngine": "podman",
         "git.autofetch": true,
         "ansible.lightspeed.enabled": false,
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "terminal.integrated.profiles.linux": {
+            "bash": {
+                "path": "/bin/bash"
+            },
+            "zsh": {
+                "path": "/bin/zsh"
+            }
+        },
         "terminal.integrated.scrollback": 10000,
         "openshiftToolkit.showWelcomePage": false,
         "openshiftToolkit.searchForToolsInPath": true,
