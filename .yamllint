@@ -9,7 +9,8 @@ rules:
   truthy:
     allowed-values: ['true', 'false']
   comments:
-    min-spaces-from-content: 2
+    min-spaces-from-content: 1
+  comments-indentation: false
   indentation:
     spaces: 2
     indent-sequences: true
