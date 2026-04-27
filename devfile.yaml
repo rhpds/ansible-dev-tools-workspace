@@ -20,3 +20,5 @@ components:
           value: /projects/ansible-dev-tools-workspace/devspaces.code-workspace
         - name: ADT_CONTAINER_ENGINE
           value: podman
+        - name: ANSIBLE_NAVIGATOR_CONFIG
+          value: /projects/ansible-dev-tools-workspace/.ansible-navigator.yml

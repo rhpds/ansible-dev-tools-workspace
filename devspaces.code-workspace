@@ -39,18 +39,16 @@
             "**/vars/**/*.yaml": "ansible",
             "**/collections/**/*.yml": "ansible",
             "**/collections/**/*.yaml": "ansible",
+            "**/galaxy.yml": "ansible",
+            "**/galaxy.yaml": "ansible",
             "**/site.yml": "ansible",
             "**/site.yaml": "ansible"
         },
-        "ansible.ansible.path": "/usr/local/bin/ansible",
-        "ansible.python.interpreterPath": "/usr/bin/python3",
         "ansible.ansible.useFullyQualifiedCollectionNames": true,
-        "ansible.ansibleNavigator.path": "/usr/local/bin/ansible-navigator",
         "ansible.completion.provideModuleOptionAliases": true,
         "ansible.completion.provideRedirectModules": true,
         "ansible.validation.enabled": true,
         "ansible.validation.lint.enabled": true,
-        "ansible.validation.lint.path": "/usr/local/bin/ansible-lint",
         "files.trimTrailingWhitespace": true,
         "files.trimFinalNewlines": true,
         "files.insertFinalNewline": true,
@@ -74,6 +72,7 @@
         "python.useEnvironmentsExtension": false,
         "security.workspace.trust.enabled": false,
         "git.openRepositoryInParentFolders": "never",
-        "redhat.telemetry.enabled": false
+        "redhat.telemetry.enabled": false,
+        "ansible.validation.lint.autoFixOnSave": true
     }
 }

@@ -12,8 +12,7 @@ ansible-navigator:
     file: /tmp/ansible-navigator.log
 
   playbook-artifact:
-    enable: true
-    save-as: "/tmp/{playbook_name}-artifact-{time_stamp}.json"
+    enable: false
 
   mode: stdout
 
