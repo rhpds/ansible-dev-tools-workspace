@@ -14,7 +14,7 @@ ansible-navigator:
   playbook-artifact:
     enable: false
 
-  mode: stdout
+  mode: interactive
 
   color:
     enable: true
